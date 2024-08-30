@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOP WATCH</title>
+    <style>
+        *{
+            padding: 0%;
+            margin: 0%;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #212121;
+            color: #fff;
+
+        }
+        
+        .btn1,.btn2,.btn3,.btn4,.btn5{
+            color: black;
+            width: 20vh;
+            height: 7vh;
+            font-weight: 900;
+            border-radius: 29px;
+            /* margin-left: auto; */
+            
+        }
+        .btn1:hover{
+            background: yellow;
+            font-weight: 900;
+        }.btn2:hover{
+            background: yellow;
+            font-weight: 900;
+        }.btn3:hover{
+            background: yellow;
+            font-weight: 900;
+        }.btn4:hover{
+            background: yellow;
+            font-weight: 900;
+        }.btn5:hover{
+            background: yellow;
+            font-weight: 900;
+        }
+        .btn5{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            margin-bottom: 20px;
+        }
+        .buttons{
+            
+            /* border: 5px solid white; */
+            
+            /* display: grid; */
+            /* display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 50px 50px ; */
+            /* gap: 15px; */
+        }
+        .timer{
+            color: white;
+            font-weight: 900;
+            font-size: 15vh;
+            text-align: center; 
+            margin-bottom: 25px;
+
+        }
+        .reset{
+            text-align: center;
+            color: #fff;
+            /* fo */
+        }
+        .buttons{
+            
+            padding: 10px 20px;
+            grid-template-columns: 1fr 1fr ;
+            grid-template-rows: 50px 50px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            gap: 5px;
+            border-radius: 15px;
+            
+        }
+        section{
+            width: 50vh;
+            margin: 150px auto;
+            height: 60vh;
+            /* display: flex; */
+            border: 2px solid rgb(12, 12, 12);
+            background-color: rgb(12, 12, 12);
+            border-radius: 29px;
+            /* display: grid;
+            place-items: center; */
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <div class="timer">0</div>
+
+        <div class="buttons">
+            <button class="btn1">START</button>
+            <button class="btn2">RESET</button>
+            <button class="btn3">STOP</button>
+            <button class="btn4">GET TIME</button>
+            
+        </div>
+
+        <button class="btn5">CLEAR TIME</button>
+        <div class="reset"></div>
+    </section>
+</body>
+<script>
+    const countDown=document.querySelector(".timer");
+    // console.log(countDown);
+    
+    const resetvalue=document.querySelector(".reset");
+    let currtime;
+    let startCount=0;
+
+    const startTimer = () => {
+        currtime= setInterval(() => { 
+            countDown.innerText = startCount++;
+        },1000);
+    };
+
+    const resetTimer =() => {
+        startCount=0;
+        countDown.innerText =startCount;
+        
+    };
+
+    const stopTimer= () => {
+        clearInterval(currtime);
+    }
+
+    const getTimer= () =>{
+        const newdiv=document.createElement('div');
+        newdiv.innerText=`THE STOP TIME IS ${startCount-1}`;
+        resetvalue.append(newdiv);
+
+    };
+
+    const clearTimer =() => {
+        resetvalue.innerText='';
+    };
+
+    document.querySelector(".btn1").addEventListener('click', startTimer);
+
+    document.querySelector(".btn2").addEventListener('click', resetTimer);
+
+    document.querySelector(".btn3").addEventListener('click', stopTimer);
+
+    document.querySelector(".btn4").addEventListener('click', getTimer);
+
+    document.querySelector(".btn5").addEventListener('click', clearTimer);
+</script>
+</html>
